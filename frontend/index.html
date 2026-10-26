@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepttár</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="topbar-inner">
+                <div class="brand">Recepttár</div>
+                <div id="user-nav" class="user-actions"></div>
+            </div>
+        </header>
+
+        <main class="page">
+            <section class="hero">
+                <h1>Receptek, ötletek és vélemények egy helyen</h1>
+                <p>Olvass, inspirálódj és oszd meg a saját tapasztalataidat a kedvenc fogásokról. A bloghoz hasonló felületben könnyen böngészheted a kategóriákat és hozzászólhatsz a receptekhez.</p>
+            </section>
+
+            <div class="grid-layout">
+                <aside class="card sidebar">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Kategóriák</h2>
+                    </div>
+                    <div id="category-list" class="category-list"></div>
+                </aside>
+
+                <section class="card main-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Receptek</h2>
+                    </div>
+                    <div id="recipe-list" class="recipe-grid"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="auth-title">Bejelentkezés</h2>
+                <button type="button" id="close-auth-modal" class="close-button" aria-label="Bezárás">×</button>
+            </div>
+
+            <form id="auth-form">
+                <div class="field-group">
+                    <label for="auth-username">Felhasználónév</label>
+                    <input id="auth-username" name="username" type="text" required>
+                </div>
+                <div class="field-group">
+                    <label for="auth-password">Jelszó</label>
+                    <input id="auth-password" name="password" type="password" required>
+                </div>
+                <div id="auth-error" class="inline-message hidden"></div>
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" onclick="closeAuthModal()">Mégse</button>
+                    <button type="submit" class="primary-button">Bejelentkezés</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="category-modal" class="modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Kategória</h2>
+                <button type="button" id="close-category-modal" class="close-button" aria-label="Bezárás">×</button>
+            </div>
+
+            <form id="category-form">
+                <div class="field-group">
+                    <label for="category-name">Név</label>
+                    <input id="category-name" name="name" type="text" required>
+                </div>
+                <div class="field-group">
+                    <label for="category-description">Leírás</label>
+                    <textarea id="category-description" name="description"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" onclick="closeCategoryModal()">Mégse</button>
+                    <button type="submit" class="primary-button">Mentés</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="recipe-modal" class="modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Recept</h2>
+                <button type="button" id="close-recipe-modal" class="close-button" aria-label="Bezárás">×</button>
+            </div>
+
+            <form id="recipe-form">
+                <div class="field-group">
+                    <label for="recipe-title">Név</label>
+                    <input id="recipe-title" name="title" type="text" required>
+                </div>
+                <div class="field-group">
+                    <label for="recipe-category">Kategória</label>
+                    <select id="recipe-category" name="category_id" required>
+                        <option value="">Válassz kategóriát</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label for="recipe-ingredients">Hozzávalók</label>
+                    <textarea id="recipe-ingredients" name="ingredients" required></textarea>
+                </div>
+                <div class="field-group">
+                    <label for="recipe-instructions">Elkészítés</label>
+                    <textarea id="recipe-instructions" name="instructions" required></textarea>
+                </div>
+                <div class="field-group">
+                    <label for="recipe-prep-time">Elkészítési idő (perc)</label>
+                    <input id="recipe-prep-time" name="prep_time" type="number" min="1" value="30" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" onclick="closeRecipeModal()">Mégse</button>
+                    <button type="submit" class="primary-button">Mentés</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/auth.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
